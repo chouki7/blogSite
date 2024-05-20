@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
+<body class="blog-body">
     <header>
         <nav>
             <div>
@@ -17,10 +19,9 @@
                 <li><a href="">ログアウト</a></li>
             </ul>
         </nav>
-        <hr>
     </header>
     <main>
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <div>
                 <h1>ブログ登録</h1>
             </div>
@@ -30,7 +31,7 @@
             </div>
             <div>
                 <div>ブログカテゴリー</div>
-                <select name="blogCategory">
+                <select name="blogCategory" class="custom-select">
                     <option value=""></option>
                     <option value="IT技術">IT技術</option>
                     <option value="旅行">旅行</option>
@@ -46,7 +47,7 @@
                 <textarea name="blogArticle"></textarea>
             </div>
         </div>
-        <div>
+        <div class="button-group">
             <button>登録</button>
             <button onclick="history.back();" type="button">戻る</button>
         </div>
