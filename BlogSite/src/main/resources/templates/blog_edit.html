@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<link rel="stylesheet" th:href="@{/css/reset.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="blog-body">
+    <header>
+        <nav>
+			<div>
+			    <span th:text="${adminName + ', Welcome'}"></span>
+			</div>
+			<ul>
+			    <li><a th:href="@{/blog/list}">ブログ一覧</a></li>
+			    <li><a th:href="@{/blog/register}">ブログ登録</a></li>
+			    <li><a th:href="@{/admin/logout}">ログアウト</a></li>
+			</ul>
+        </nav>
+    </header>
+    <main>
+        <form action="" method="post" enctype="multipart/form-data">
+            <div>
+                <h1>ブログ編集</h1>
+            </div>
+            <div>
+                <div>ブログタイトル</div>
+                <input type="text" name="blogTitle" required>
+            </div>
+            <div>
+                <div>ブログカテゴリー</div>
+                <select name="blogCategory">
+                    <option value=""></option>
+                    <option value="IT技術">IT技術</option>
+                    <option value="旅行">旅行</option>
+                    <option value="グルメ">グルメ</option>
+                </select>
+            </div>
+            <div>
+                <div>ブログ画像</div>
+                <input type="file" name="blogImage">
+            </div>
+            <div>
+                <div>ブログ記事</div>
+                <textarea name="blogArticle"></textarea>
+            </div>
+        <div class="button-group">
+            <input type="hidden" name="blogId" value="">
+            <button>更新</button>
+            <button onclick="history.back();" type="button">戻る</button>
+        </div>
+        </form>
+        <form action="" method="post">
+            <div class="button-group">
+                <input type="hidden" name="blogId" value="">
+                <button>削除</button>
+            </div>
+        </form>
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<link rel="stylesheet" th:href="@{/css/reset.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="blog-body">
+    <header>
+        <nav>
+            <div>
+                <span th:text="${adminName + ', Welcome'}"></span>
+            </div>
+            <ul>
+                <li><a th:href="@{/blog/list}">ブログ一覧</a></li>
+                <li><a th:href="@{/blog/register}">ブログ登録</a></li>
+                <li><a th:href="@{/admin/logout}">ログアウト</a></li>
+            </ul>
+        </nav>
+    </header>
+    <article>
+        <div>
+            <h1>ブログ一覧</h1>
+        </div>
+        <div>
+            <ul>
+                <li th:each="blog:${blogList}">
+                    <a th:href="@{/blog/edit/{blogId}(blogId=${blog.blogId})}">
+                        <img th:src="@{/blog-img/{imagePath}(imagePath=${blog.blogImage})}" alt="" class="rounded">
+                        <div class="text-content">
+                            <p th:text="${'タイトル：' + blog.blogTitle}"></p>
+                            <p th:text="${'カテゴリー：' + blog.blogCategory}"></p>
+                            <p th:text="${'記事：' + blog.blogArticle}"></p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </article>
+    <footer>
+    </footer>
+</body>
+</html>
