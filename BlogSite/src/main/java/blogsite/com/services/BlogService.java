@@ -57,4 +57,43 @@ public class BlogService {
 		}
 	}
 	
+	// 更新処理のチェック
+	// もし、blogId== null 更新処理しない false
+	// そうでない場合、blogIdを使って、編集する前のデータを取得
+	// 変更 するべきところだけ、セッターを使用してデータの更新をする true
+	public boolean blogUpdate(
+			Long blogId,
+			String blogTitle, 
+			String blogCategory, 
+			String blogImage, 
+			String blogArticle, 
+			Long adminId) {
+		if(blogId == null) {
+			return false;
+		} else {
+			Blog blogs = blogDao.findByBlogId(blogId);
+			blogs.setBlogTitle(blogTitle);
+			blogs.setBlogCategory(blogCategory);
+			blogs.setBlogImage(blogImage);
+			blogs.setBlogArticle(blogArticle);
+			blogs.setAdminId(adminId);
+			blogDao.save(blogs);
+			return true;
+		}
+	}
+	
+	// 削除処理のチェック
+	// もし、コントローラークラスにもらったblogIdがnullであれば
+	// 削除できないこと false
+	// そうでない場合
+	// deleteByBlogIdを使用してblogの削除
+	// true
+	public boolean deleteBlog(Long blogId) {
+		if (blogId == null) {
+			return false;
+		} else {
+			blogDao.deleteByBlogId(blogId);
+			return true;
+		}
+	}
 }
